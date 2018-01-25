@@ -23,3 +23,33 @@ Mailing lists:
  * [CHIPSEC discussion list on 01.org](https://lists.01.org/mailman/listinfo/chipsec)
 
 Follow us on [twitter](https://twitter.com/CHIPSEC)
+
+Note for Apollo Lake
+--------------------
+
+To use CHIPSEC in place without installing it:
+python setup.py build_ext -i
+sudo python chipsec_main.py
+
+sudo python chipsec_util.py io list
+
+sudo python chipsec_util.py io 0x80 byte 0x99
+
+dump left lan poe ic
+sudo python chipsec_util.py smbus read 0x40 0x00 0x100
+
+turn off left lan poe power
+sudo python chipsec_util.py smbus write 0x40 0x12 0xFC
+
+turn on left lan poe power
+sudo python chipsec_util.py smbus write 0x40 0x12 0xFF
+
+dump right lan poe ic
+sudo python chipsec_util.py smbus read 0x42 0x00 0x100
+
+dump upper sodimm spd
+sudo python chipsec_util.py smbus read 0xA4 0x00 0x100
+
+dump bottom sodimm spd
+sudo python chipsec_util.py smbus read 0xA0 0x00 0x100
+
